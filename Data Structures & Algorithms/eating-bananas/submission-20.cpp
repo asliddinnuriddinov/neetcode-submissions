@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int l = 1, r = ranges::max(piles);
+        while(l < r){
+            int time = 0;
+            int mid = (l + r) / 2;
+            for(int &pile : piles){
+                time += (pile + mid - 1) / mid;
+            }
+            if(time > h){
+                l = mid + 1;
+            }
+            else r = mid;
+        }
+        return l;
+    }
+};
